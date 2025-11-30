@@ -44,7 +44,7 @@ int main() {
 	// And add code to execute cd, exit, help commands
 	// Use the example provided in myspawn.c
 
-		char *argv[MAXARGD];
+		char *argv[MAXARGS];
 		int argc = 0;
 		char *tok = strtok(line, " ");
 		while (tok != NULL && argc < MAXARGS -1){
@@ -56,8 +56,8 @@ int main() {
 		}
 		char *cmd = argv[0];
 		if(!isAllowed(cmd)){
-			printf("NOT ALLOWED!\n")
-				continue;
+			printf("NOT ALLOWED!\n");
+			continue;
 		}
 
 		if (strcmp(cmd, "exit") == 0){
@@ -66,7 +66,7 @@ int main() {
 
 		if(strcmp(cmd, "help")==0){
 			printf("The allowed commands are:\n");
-			for (int i = 0: i < N; i++){
+			for (int i = 0; i < N; i++){
 				printf("%d: %s\n", i+1, allowed[i]);
 			}
 			continue;
@@ -84,8 +84,8 @@ int main() {
 		pid_t pid;
 		int stat;
 		if (posix_spawnp(&pid, cmd, NULL, NULL, argv, environ) != 0){
-			printf("NOT ALLOWED!\n")
-				continue;
+			printf("NOT ALLOWED!\n");
+			continue;
 		}
 		wait(pid, &stat, 0);
     }
